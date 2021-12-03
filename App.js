@@ -1,17 +1,22 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import gloabalStyle from './assets/styles/globalStyle'
-import AddButton from './Screens/Components/AddButton'
-import Card from './Screens/Components/Card'
-import FloatingLabelInput from './Screens/Components/FloatingLabelInput'
-import PrimaryButton from './Screens/Components/PrimaryButton'
+import { NavigationContainer } from '@react-navigation/native';
+import store from './store'
+import { Provider } from 'react-redux'
+import SplashScreen from 'react-native-splash-screen'
+import OnBoardingStack from './Screens/Stacks/OnBoardingStack';
 
 export default function App() {
   const [state, setstate] = useState('')
+  useEffect(()=>{
+    SplashScreen.hide();
+  },[])
   return (
-    <View style={gloabalStyle.container}>
-      <Text>App Screen</Text>
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+      <OnBoardingStack/>
+    </NavigationContainer> 
+    </Provider>
   )
 }
 

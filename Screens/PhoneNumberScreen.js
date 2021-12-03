@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import gloabalStyle from '../assets/styles/globalStyle'
-export default function LoginScreen() {
+export default function PhoneNumberScreen() {
     return (
         <View style={gloabalStyle.container}>
-            <Text></Text>
+            <Text>Phone Screen</Text>
         </View>
     )
 }
