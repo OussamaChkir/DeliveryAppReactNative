@@ -28,7 +28,7 @@ export default function FloatingLabelInput({label,isPassword,keyboard,iconName,o
 const styles = StyleSheet.create({
     floatingWrapper:{
         paddingTop:20,
-        
+        flex:1,
     },
 
     floatingLabel:{
