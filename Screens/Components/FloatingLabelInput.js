@@ -2,15 +2,15 @@ import React,{useState} from 'react'
 import { Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import colors from '../../assets/colors/colors';
 import Feather from 'react-native-vector-icons/Feather';
-export default function FloatingLabelInput({label,isPassword,keyboard,iconName,onPressIcon,iconStyle,onChangeText,value}) {
+export default function FloatingLabelInput({label,isPassword,keyboard,iconName,onPressIcon,iconStyle,onChangeText,value,style}) {
     const [isFocused, setIsFocused] = useState(false)
     const [Password, setPassword] = useState(false)
   const  handleFocus = () => setIsFocused(true);
   const  handleBlur = () => setIsFocused(false);
   const  handlePassword = () => setPassword(!Password);
     return (
-        <View style={styles.floatingWrapper}>
-            <Text style={[styles.floatingLabel,isFocused||value ?{top:0,fontSize:16,color:colors.Title}:{top:26,fontSize:20,color:colors.SubTitle}]}>{label||'lab'}</Text>
+        <View style={[styles.floatingWrapper,style]}>
+            <Text style={[styles.floatingLabel,isFocused||value ?{top:0,fontSize:16,color:colors.SubTitle}:{top:26,fontSize:20,color:colors.SubTitle}]}>{label||'lab'}</Text>
             <View style={styles.inputIcon}>
             <TextInput style={styles.floatingInput} keyboardType={keyboard} isPassword={isPassword} secureTextEntry={Password} value={value} onChangeText={onChangeText} onBlur={handleBlur} onFocus={handleFocus}/>
             {isPassword&&<TouchableOpacity onPress={handlePassword}>
@@ -28,7 +28,8 @@ export default function FloatingLabelInput({label,isPassword,keyboard,iconName,o
 const styles = StyleSheet.create({
     floatingWrapper:{
         paddingTop:20,
-        flex:1,
+       
+        //flex:1,
     },
 
     floatingLabel:{
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     floatingInput:{
         fontSize:20,
         flex:1,
-        fontFamily:'Gilroy-Regular',
+        fontFamily:'Gilroy-SemiBold',
     },
     floatinIcon:{
         paddingLeft:10,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
         
     },
     line:{
-        backgroundColor:colors.SubTitle,
+        backgroundColor:colors.lineColor,
         padding:0.7,
     }
 })

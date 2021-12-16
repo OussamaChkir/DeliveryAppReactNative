@@ -5,39 +5,18 @@ import gloabalStyle from '../assets/styles/globalStyle'
 import Flag from 'react-native-flags';
 import { Dropdown } from 'react-native-element-dropdown';
 import colors from '../assets/colors/colors';
-import FloatingLabelInput from './Components/FloatingLabelInput';
 import NextButton from './Components/NextButton';
-export default function PhoneNumberScreen() {
+
+export default function PhoneNumberScreen({navigation}) {
     const [isLoading, setLoading] = useState(false);
     const [value, setValue] = useState(null);
     const [Data, setData] = useState([]);
-    const getPhoneCountry =async ()=>{
-        try{
-            const response =await fetch('https://gist.githubusercontent.com/anubhavshrimal/75f6183458db8c453306f93521e93d37/raw/f77e7598a8503f1f70528ae1cbf9f66755698a16/CountryCodes.json');
-            const json =response.json().then((res)=>{setData(JSON.stringify(res))});
-            console.log(Data)
-        }catch(err){
-            console.error(err)
-        }finally {
-            setLoading(true);
-          }
-    }
-    const data = [
-        { label: 'Item 1', value: '1' },
-        { label: 'Item 2', value: '2' },
-        { label: 'Item 3', value: '3' },
-        { label: 'Item 4', value: '4' },
-        { label: 'Item 5', value: '5' },
-        { label: 'Item 6', value: '6' },
-        { label: 'Item 7', value: '7' },
-        { label: 'Item 8', value: '8' },
-    ];
     useEffect(() => {
         fetch('https://gist.githubusercontent.com/anubhavshrimal/75f6183458db8c453306f93521e93d37/raw/f77e7598a8503f1f70528ae1cbf9f66755698a16/CountryCodes.json')
         .then((response)=>response.json())
         .then((json)=>setData(json))
         .catch((error)=>console.error(error))
-        .finally(()=>{setLoading(true);console.log(Data)});
+        .finally(()=>{setLoading(true);});
         
       }, []);
     return (
@@ -73,7 +52,7 @@ export default function PhoneNumberScreen() {
                 </View>}
                 <View style={styles.line}/>
                 {/* Button */}
-               <NextButton iconName='chevron-right' buttonstyle={styles.button}/> 
+               <NextButton iconName='chevron-right' onPress={()=>navigation.navigate('Location')} buttonstyle={styles.button}/> 
             </View>
         </View>
         </TouchableWithoutFeedback>
@@ -86,6 +65,7 @@ const styles = StyleSheet.create({
     },
     contentWrapper: {
         flex: 1,
+        marginTop:30,
         marginHorizontal:25,
        
     },
@@ -114,7 +94,7 @@ const styles = StyleSheet.create({
         fontSize:18,
     },
     line:{
-        backgroundColor:colors.SubTitle,
+        backgroundColor:colors.lineColor,
         padding:0.7,
         width:'90%',
     },

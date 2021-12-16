@@ -11,7 +11,15 @@ titleStyle:{
 color:colors.Title,
 fontSize:26,
 fontFamily:'Gilroy-Bold',
-}
+},
+subTitleStyle:{
+    color:colors.SubTitle,
+    fontSize:16,
+    fontFamily:'Gilroy-Medium',
+},
+error:{
+color:colors.Error,
+},
 })
 
 

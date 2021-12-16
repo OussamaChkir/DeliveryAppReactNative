@@ -2,10 +2,10 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import colors from '../../assets/colors/colors'
 
-export default function PrimaryButton({text,onPress}) {
+export default function PrimaryButton({text,onPress,style}) {
     return (
         <TouchableOpacity onPress={onPress} >
-        <View style={styles.ButtonWrapper}>
+        <View style={[styles.ButtonWrapper,style]}>
             <Text style={styles.ButtonText}>{text||''}</Text>
         </View>
         </TouchableOpacity>
